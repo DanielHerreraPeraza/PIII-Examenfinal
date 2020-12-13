@@ -1,0 +1,11 @@
+{
+  "examenApp": {
+    "PuestoEmpleado": {
+      "null": "",
+      "PROGRAMADOR": "PROGRAMADOR",
+      "DISENADOR": "DISENADOR",
+      "CONTADOR": "CONTADOR",
+      "OTRO": "OTRO"
+    }
+  }
+}

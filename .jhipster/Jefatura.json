@@ -1,0 +1,41 @@
+{
+  "name": "Jefatura",
+  "fields": [
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "departamento",
+      "otherEntityRelationshipName": "jefatura",
+      "relationshipName": "departamento",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "empleado",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "empleado",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201213184833",
+  "entityTableName": "jefatura",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

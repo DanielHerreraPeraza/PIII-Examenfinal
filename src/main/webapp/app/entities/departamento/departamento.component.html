@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="examenApp.departamento.home.title">Departamentos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-departamento" [routerLink]="['/departamento/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="examenApp.departamento.home.createLabel">
+            Create a new Departamento
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="departamentos?.length === 0">
+        <span jhiTranslate="examenApp.departamento.home.notFound">No departamentos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="departamentos && departamentos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.departamento.nombre">Nombre</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.departamento.descripcion">Descripcion</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.departamento.estado">Estado</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let departamento of departamentos ;trackBy: trackId">
+                    <td><a [routerLink]="['/departamento', departamento.id, 'view']">{{ departamento.id }}</a></td>
+                    <td>{{ departamento.nombre }}</td>
+                    <td>{{ departamento.descripcion }}</td>
+                    <td jhiTranslate="{{ 'examenApp.Estado.' + departamento.estado }}">{{ departamento.estado }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/departamento', departamento.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/departamento', departamento.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(departamento)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

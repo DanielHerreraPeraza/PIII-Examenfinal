@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="examenApp.empleado.home.title">Empleados</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-empleado" [routerLink]="['/empleado/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="examenApp.empleado.home.createLabel">
+            Create a new Empleado
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="empleados?.length === 0">
+        <span jhiTranslate="examenApp.empleado.home.notFound">No empleados found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="empleados && empleados.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.nombre">Nombre</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.primerApellido">Primer Apellido</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.segundoApellido">Segundo Apellido</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.sexo">Sexo</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.fechaNacimiento">Fecha Nacimiento</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.fechaIngreso">Fecha Ingreso</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.puesto">Puesto</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.salario">Salario</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.estado">Estado</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.empleado.departamento">Departamento</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empleado of empleados ;trackBy: trackId">
+                    <td><a [routerLink]="['/empleado', empleado.id, 'view']">{{ empleado.id }}</a></td>
+                    <td>{{ empleado.nombre }}</td>
+                    <td>{{ empleado.primerApellido }}</td>
+                    <td>{{ empleado.segundoApellido }}</td>
+                    <td>{{ empleado.sexo }}</td>
+                    <td>{{ empleado.fechaNacimiento | date:'medium' }}</td>
+                    <td>{{ empleado.fechaIngreso | date:'medium' }}</td>
+                    <td jhiTranslate="{{ 'examenApp.PuestoEmpleado.' + empleado.puesto }}">{{ empleado.puesto }}</td>
+                    <td>{{ empleado.salario }}</td>
+                    <td jhiTranslate="{{ 'examenApp.Estado.' + empleado.estado }}">{{ empleado.estado }}</td>
+                    <td>
+                        <div *ngIf="empleado.departamento">
+                            <a [routerLink]="['/departamento', empleado.departamento?.id, 'view']" >{{ empleado.departamento?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/empleado', empleado.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/empleado', empleado.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(empleado)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

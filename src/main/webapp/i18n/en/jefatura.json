@@ -1,0 +1,24 @@
+{
+  "examenApp": {
+    "jefatura": {
+      "home": {
+        "title": "Jefaturas",
+        "createLabel": "Create a new Jefatura",
+        "createOrEditLabel": "Create or edit a Jefatura",
+        "notFound": "No Jefaturas found"
+      },
+      "created": "A new Jefatura is created with identifier {{ param }}",
+      "updated": "A Jefatura is updated with identifier {{ param }}",
+      "deleted": "A Jefatura is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jefatura {{ id }}?"
+      },
+      "detail": {
+        "title": "Jefatura"
+      },
+      "fechaInicio": "Fecha Inicio",
+      "departamento": "Departamento",
+      "empleado": "Empleado"
+    }
+  }
+}

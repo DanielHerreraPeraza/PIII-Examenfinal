@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="departamento">
+            <h2><span jhiTranslate="examenApp.departamento.detail.title">Departamento</span> {{ departamento.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="examenApp.departamento.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ departamento.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="examenApp.departamento.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ departamento.descripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="examenApp.departamento.estado">Estado</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'examenApp.Estado.' + departamento.estado }}">{{ departamento.estado }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/departamento', departamento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

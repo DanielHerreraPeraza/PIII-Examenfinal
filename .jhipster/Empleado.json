@@ -1,0 +1,99 @@
+{
+  "name": "Empleado",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "primerApellido",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "segundoApellido",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "sexo",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "fechaNacimiento",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "fechaIngreso",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "puesto",
+      "fieldType": "PuestoEmpleado",
+      "fieldValues": "PROGRAMADOR,DISENADOR,CONTADOR,OTRO",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "salario",
+      "fieldType": "Double",
+      "fieldValidateRules": [
+        "required",
+        "min"
+      ],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "Estado",
+      "fieldValues": "ACTIVO,INACTIVO",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "jefatura",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "empleado",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "departamento",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "departamento",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201213184633",
+  "entityTableName": "empleado",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

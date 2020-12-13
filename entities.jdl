@@ -1,0 +1,38 @@
+enum Estado {
+	ACTIVO, INACTIVO
+}
+
+enum PuestoEmpleado {
+    PROGRAMADOR, DISENADOR, CONTADOR, OTRO
+}
+
+entity Empleado {
+    nombre String required
+    primerApellido String required
+    segundoApellido String required
+    sexo String required
+    fechaNacimiento ZonedDateTime required
+    fechaIngreso ZonedDateTime required
+    puesto PuestoEmpleado required
+    salario Double required min(1)
+    estado Estado required
+}
+
+entity Departamento {
+	nombre String required
+    descripcion String required
+    estado Estado required
+}
+
+entity Jefatura {
+	fechaInicio ZonedDateTime required
+}
+
+relationship OneToOne {
+	Jefatura{departamento} to Departamento{jefatura}
+    Jefatura{empleado} to Empleado{empleado}
+}
+
+relationship OneToMany {
+	Departamento{empleado} to Empleado{departamento}
+}

@@ -1,0 +1,166 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-empleado-heading" jhiTranslate="examenApp.empleado.home.createOrEditLabel">Create or edit a Empleado</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.primerApellido" for="field_primerApellido">Primer Apellido</label>
+                    <input type="text" class="form-control" name="primerApellido" id="field_primerApellido"
+                           formControlName="primerApellido"/>
+                    <div *ngIf="editForm.get('primerApellido')!.invalid && (editForm.get('primerApellido')!.dirty || editForm.get('primerApellido')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('primerApellido')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.segundoApellido" for="field_segundoApellido">Segundo Apellido</label>
+                    <input type="text" class="form-control" name="segundoApellido" id="field_segundoApellido"
+                           formControlName="segundoApellido"/>
+                    <div *ngIf="editForm.get('segundoApellido')!.invalid && (editForm.get('segundoApellido')!.dirty || editForm.get('segundoApellido')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('segundoApellido')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.sexo" for="field_sexo">Sexo</label>
+                    <input type="text" class="form-control" name="sexo" id="field_sexo"
+                           formControlName="sexo"/>
+                    <div *ngIf="editForm.get('sexo')!.invalid && (editForm.get('sexo')!.dirty || editForm.get('sexo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sexo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.fechaNacimiento" for="field_fechaNacimiento">Fecha Nacimiento</label>
+                    <div class="d-flex">
+                        <input id="field_fechaNacimiento" type="datetime-local" class="form-control" name="fechaNacimiento" formControlName="fechaNacimiento" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechaNacimiento')!.invalid && (editForm.get('fechaNacimiento')!.dirty || editForm.get('fechaNacimiento')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaNacimiento')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechaNacimiento')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.fechaIngreso" for="field_fechaIngreso">Fecha Ingreso</label>
+                    <div class="d-flex">
+                        <input id="field_fechaIngreso" type="datetime-local" class="form-control" name="fechaIngreso" formControlName="fechaIngreso" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechaIngreso')!.invalid && (editForm.get('fechaIngreso')!.dirty || editForm.get('fechaIngreso')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaIngreso')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechaIngreso')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.puesto" for="field_puesto">Puesto</label>
+                    <select class="form-control" name="puesto" formControlName="puesto" id="field_puesto">
+                        <option value="PROGRAMADOR">{{ 'examenApp.PuestoEmpleado.PROGRAMADOR' | translate }}</option>
+                        <option value="DISENADOR">{{ 'examenApp.PuestoEmpleado.DISENADOR' | translate }}</option>
+                        <option value="CONTADOR">{{ 'examenApp.PuestoEmpleado.CONTADOR' | translate }}</option>
+                        <option value="OTRO">{{ 'examenApp.PuestoEmpleado.OTRO' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('puesto')!.invalid && (editForm.get('puesto')!.dirty || editForm.get('puesto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('puesto')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.salario" for="field_salario">Salario</label>
+                    <input type="number" class="form-control" name="salario" id="field_salario"
+                           formControlName="salario"/>
+                    <div *ngIf="editForm.get('salario')!.invalid && (editForm.get('salario')!.dirty || editForm.get('salario')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('salario')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('salario')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('salario')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.estado" for="field_estado">Estado</label>
+                    <select class="form-control" name="estado" formControlName="estado" id="field_estado">
+                        <option value="ACTIVO">{{ 'examenApp.Estado.ACTIVO' | translate }}</option>
+                        <option value="INACTIVO">{{ 'examenApp.Estado.INACTIVO' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="examenApp.empleado.departamento" for="field_departamento">Departamento</label>
+                    <select class="form-control" id="field_departamento" name="departamento" formControlName="departamento">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="departamentoOption.id === editForm.get('departamento')!.value?.id ? editForm.get('departamento')!.value : departamentoOption" *ngFor="let departamentoOption of departamentos; trackBy: trackById">{{ departamentoOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

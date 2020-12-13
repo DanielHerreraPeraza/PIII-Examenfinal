@@ -1,0 +1,18 @@
+/**
+ * The application configuration.
+ * @author Daniel José Herrera Peraza
+ */
+application {
+  config {
+    applicationType monolith
+    authenticationType jwt
+    baseName examen
+    buildTool maven
+    clientFramework angularX
+    clientPackageManager npm
+    devDatabaseType mysql
+    languages [en]
+    packageName cr.ac.ucenfotec.examen
+    prodDatabaseType mysql
+  }
+}

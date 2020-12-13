@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="examenApp.jefatura.home.title">Jefaturas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-jefatura" [routerLink]="['/jefatura/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="examenApp.jefatura.home.createLabel">
+            Create a new Jefatura
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="jefaturas?.length === 0">
+        <span jhiTranslate="examenApp.jefatura.home.notFound">No jefaturas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="jefaturas && jefaturas.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.jefatura.fechaInicio">Fecha Inicio</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.jefatura.departamento">Departamento</span></th>
+                    <th scope="col" ><span jhiTranslate="examenApp.jefatura.empleado">Empleado</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let jefatura of jefaturas ;trackBy: trackId">
+                    <td><a [routerLink]="['/jefatura', jefatura.id, 'view']">{{ jefatura.id }}</a></td>
+                    <td>{{ jefatura.fechaInicio | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="jefatura.departamento">
+                            <a [routerLink]="['/departamento', jefatura.departamento?.id, 'view']" >{{ jefatura.departamento?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="jefatura.empleado">
+                            <a [routerLink]="['/empleado', jefatura.empleado?.id, 'view']" >{{ jefatura.empleado?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/jefatura', jefatura.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/jefatura', jefatura.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(jefatura)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
