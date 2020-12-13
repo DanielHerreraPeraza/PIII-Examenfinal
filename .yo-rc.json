@@ -37,7 +37,10 @@
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [],
-    "blueprints": []
+    "blueprints": [],
+    "herokuAppName": "sleepy-inlet-29389",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "11"
   },
   "entities": []
 }
